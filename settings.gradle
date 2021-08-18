@@ -1,0 +1,19 @@
+pluginManagement {
+    repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven {
+            content {
+                includeGroup('com.badlogicgames.packr')
+            }
+            url 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
+    }
+
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.namespace == 'com.hendraanggrian') {
+                useModule("${requested.id.namespace}:packr-gradle-plugin:${requested.version}")
+            }
+        }
+    }
+}
